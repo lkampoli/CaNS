@@ -32,8 +32,7 @@ module mod_solver
     py(:,:,:) = p(1:n(1),1:n(2),1:n(3))
     !$OMP END WORKSHARE
     call transpose_y_to_x(py,px)
-!#elif DECOMP_Z
-#else
+#else /*DECOMP_Z*/
     !$OMP WORKSHARE
     pz(:,:,:) = p(1:n(1),1:n(2),1:n(3))
     !$OMP END WORKSHARE

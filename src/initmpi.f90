@@ -69,8 +69,7 @@ module mod_initmpi
     nb(1,2) = MPI_PROC_NULL
     call MPI_CART_SHIFT(comm_cart,1,1,nb(0,3),nb(1,3),ierr)
     ipencil = 2
-#else
-!#elif DECOMP_Z
+#else /*DECOMP_Z*/
     dims(:) = dims_xyz(:,3)
     ijk_start(:) = zstart(:) - 1
     comm_cart = DECOMP_2D_COMM_CART_Z

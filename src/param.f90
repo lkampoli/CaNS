@@ -111,8 +111,7 @@ contains
     dims_aux(1) = dims(1)
     dims_aux(2) = 1
     dims_aux(3) = dims(2)
-#else
-!#elif DECOMP_Z
+#else /*DECOMP_Z*/
     dims_aux(1) = dims(1)
     dims_aux(2) = dims(2)
     dims_aux(3) = 1

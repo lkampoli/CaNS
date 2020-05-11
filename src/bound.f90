@@ -515,7 +515,7 @@ module mod_bound
          !call MPI_WAITALL(4, requests, statuses, error)
 #endif
     case(3) ! z direction
-#if defined(DECOMP_X) || defined(DECOMP_Y)
+#if defined(DECOMP_X) || defined(DECOMP_Y) /*#ifndef DECOMP_Z*/
       call MPI_SENDRECV(p(0,0,1     ),1,halo(idir),nb(0,idir),0, &
                         p(0,0,n(3)+1),1,halo(idir),nb(1,idir),0, &
                         comm_cart,status,ierr)
