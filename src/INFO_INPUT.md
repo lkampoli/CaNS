@@ -12,7 +12,7 @@ poi                      ! inivel
 T                        ! is_wallturb
 100000 100. 0.1          ! nstep, time_max, tw_max
 T F F                    ! stop_type(1:3)
-F                        ! restart
+F T                      ! restart,is_overwrite_input
 10 10 100 500 10000 5000 ! icheck, iout0d, iout1d, iout2d, iout3d, isave
 P P  P P  D D            ! cbcvel(0:1,1:3,1) [u BC type]
 P P  P P  D D            ! cbcvel(0:1,1:3,2) [v BC type]
@@ -94,7 +94,7 @@ See `initflow.f90` for more details.
 ~~~
 100000 100. 0.1          ! nstep, time_max, tw_max
 T F F                    ! stop_type(1:3)
-F                        ! restart
+F T                      ! restart,is_overwrite_input
 ~~~
 
 These lines set the simulation termination criteria and wether the simulation should be restarted from a checkpoint file.
@@ -113,7 +113,9 @@ These lines set the simulation termination criteria and wether the simulation sh
 
 a checkoint file `fld.bin` will be saved before the simulation is terminated.
 
-`restart`, if true, **restarts the simulation** from a previously saved checkpoint file, named `fld.bin`.
+`restart`, if true, **restarts the simulation** from a previously saved checkpoint file, named `fld.bin`. 
+
+`is_overwrite_input`, if true, overwrites the checkpoint file `fld.bin` at every save; if false, a symbolic link is created which makes `fld.bin` point to the last checkpoint file with name `fld_???????.bin`. In the latter case case, to restart a run from a different checkpoint one just has to point the file `fld.bin` to the right file, e.g.: ` ln -sf fld_0000100.bin fld.bin`.
 
 ---
 
@@ -128,7 +130,7 @@ These lines set the frequency of time step checking and output:
 * every `iout1d` time steps **1d profiles** are written (e.g. velocity and its moments) to a file;
 * every `iout2d` time steps **2d slices of a 3d scalar field** are written to a file;
 * every `iout3d` time steps **3d scalar fields** are written to a file;
-* every `isave`  time steps a **checkpoint file** is written (`fld.bin`) overwritting the last save.
+* every `isave`  time steps a **checkpoint file** is written (`fld_???????.bin`), and a symbolic link for the restart file, `fld.bin`, will point to this last save so that, by default, the last saved checkpoint file is used to restart the simulation.
 
 1d, 2d and 3d outputs can be tweaked modifying files `out?d.h90`, and re-compiling the source. See also `output.f90` for more details.
 
