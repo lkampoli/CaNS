@@ -58,7 +58,7 @@ module mod_mom
     enddo
     !$OMP END PARALLEL DO
     taux(:) = 0.
-    if( is_bound(0,2) ) then
+    if(is_bound(0,2)) then
       do k=1,nz
         do i=1,nx
           dudyp = (u(i,1 ,k)-u(i,0   ,k))*dyi*visc*dzflzi(k)
@@ -66,7 +66,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if( is_bound(1,2) ) then
+    if(is_bound(1,2)) then
       do k=1,nz
         do i=1,nx
           dudym = (u(i,ny,k)-u(i,ny+1,k))*dyi*visc*dzflzi(k)
@@ -74,7 +74,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if( is_bound(0,3) ) then
+    if(is_bound(0,3)) then
       do j=1,ny
         do i=1,nx
           dudzp = (u(i,j,1 )-u(i,j,0   ))*dzci(0)*visc
@@ -82,7 +82,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if( is_bound(1,3) ) then
+    if(is_bound(1,3)) then
       do j=1,ny
         do i=1,nx
           dudzm = (u(i,j,nz)-u(i,j,nz+1))*dzci(nz)*visc
@@ -151,7 +151,7 @@ module mod_mom
     enddo
     !$OMP END PARALLEL DO
     tauy(:) = 0.
-    if( is_bound(0,1) ) then
+    if(is_bound(0,1)) then
       do k=1,nz
         do j=1,ny
           dvdxp = (v(1 ,j,k)-v(0   ,j,k))*dxi*visc*dzflzi(k)
@@ -159,7 +159,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if( is_bound(1,1) ) then
+    if(is_bound(1,1)) then
       do k=1,nz
         do j=1,ny
           dvdxm = (v(nx,j,k)-v(nx+1,j,k))*dxi*visc*dzflzi(k)
@@ -167,7 +167,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if(is_bound(0,3) ) then
+    if(is_bound(0,3)) then
       do j=1,ny
         do i=1,nx
           dvdzp = (v(i,j,1 )-v(i,j,0   ))*dzci(0)*visc
@@ -175,7 +175,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if(is_bound(1,3) ) then
+    if(is_bound(1,3)) then
       do j=1,ny
         do i=1,nx
           dvdzm = (v(i,j,nz)-v(i,j,nz+1))*dzci(nz)*visc
@@ -244,7 +244,7 @@ module mod_mom
     enddo
     !$OMP END PARALLEL DO
     tauz(:) = 0.
-    if(is_bound(0,1) ) then
+    if(is_bound(0,1)) then
       do k=1,nz
         do j=1,ny
           dwdxp = (w(1 ,j,k)-w(0   ,j,k))*dxi*visc*dzflzi(k)
@@ -252,7 +252,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if(is_bound(1,1) ) then
+    if(is_bound(1,1)) then
       do k=1,nz
         do j=1,ny
           dwdxm = (w(nx,j,k)-w(nx+1,j,k))*dxi*visc*dzflzi(k)
@@ -260,7 +260,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if(is_bound(0,2) ) then
+    if(is_bound(0,2)) then
       do k=1,nz
         do i=1,nx
           dwdyp = (w(i,1,k )-w(i,0   ,k))*dyi*visc*dzflzi(k)
@@ -268,7 +268,7 @@ module mod_mom
         enddo
       enddo
     endif
-    if(is_bound(1,2) ) then
+    if(is_bound(1,2)) then
       do k=1,nz
         do i=1,nx
           dwdym = (w(i,ny,k)-w(i,ny+1,k))*dyi*visc*dzflzi(k)

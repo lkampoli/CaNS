@@ -18,7 +18,7 @@ module mod_chkdiv
     real(rp), intent(out) :: divtot,divmax
     real(rp) :: dxi,dyi,div!,dzi,div
     integer :: i,j,k,im,jm,km
-    integer :: ii,jj,kk
+!    integer :: ii,jj,kk
     !
     dxi = dli(1)
     dyi = dli(2)
@@ -41,10 +41,10 @@ module mod_chkdiv
                    (u(i,j,k)-u(im,j,k))*dxi
              divmax = max(divmax,abs(div))
              divtot = divtot + div
-             ii = ijk_start(1)+i
-             jj = ijk_start(2)+j
-             kk = ijk_start(3)+k
-             if(abs(div).ge.1.e-12) print*,div,'Large divergence at grid cell: ',ii,jj,kk,div
+!             ii = ijk_start(1)+i
+!             jj = ijk_start(2)+j
+!             kk = ijk_start(3)+k
+!             if(abs(div).ge.1.e-12) print*,div,'Large divergence at grid cell: ',ii,jj,kk,div
           enddo
        enddo
     enddo

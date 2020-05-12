@@ -80,8 +80,7 @@ module mod_initmpi
     ipencil = 3
 #endif
     is_bound(:,:) = .false.
-    !
-    where( nb(:,:).eq.MPI_PROC_NULL ) is_bound(:,:) = .true.
+    where(nb(:,:).eq.MPI_PROC_NULL) is_bound(:,:) = .true.
     !
     ! define x, y and z halo regions
     !

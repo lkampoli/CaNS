@@ -383,7 +383,6 @@ module mod_output
           vw(ii,kk) = 0.
           uv(ii,kk) = 0.
           do j=1,n(2)
-            jj = ijk_start(2) + j
             um(ii,kk) = um(ii,kk) + 0.5*(u(i-1,j,k)+u(i,j,k))
             vm(ii,kk) = vm(ii,kk) + v(i,j,k)
             wm(ii,kk) = wm(ii,kk) + 0.5*(w(i,j,k-1)+w(i,j,k))
@@ -452,7 +451,6 @@ module mod_output
           uv(jj,kk) = 0.
           uw(jj,kk) = 0.
           do i=1,n(1)
-            ii = ijk_start(1) + i
             um(jj,kk) = um(jj,kk) + u(i,j,k)
             vm(jj,kk) = vm(jj,kk) + 0.5*(v(i,j-1,k)+v(i,j,k))
             wm(jj,kk) = wm(jj,kk) + 0.5*(w(i,j,k-1)+w(i,j,k))

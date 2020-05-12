@@ -30,32 +30,32 @@ module mod_bound
     call updthalo(n,2,w)
     call updthalo(n,3,w)
     !
-    if( is_bound(0,1) ) then
+    if(is_bound(0,1)) then
       call set_bc(cbc(0,1,1),0,n(1),1,.false.,bc(0,1,1),dl(1),u)
       call set_bc(cbc(0,1,2),0,n(1),1,.true. ,bc(0,1,2),dl(1),v)
       call set_bc(cbc(0,1,3),0,n(1),1,.true. ,bc(0,1,3),dl(1),w)
     endif
-    if( is_bound(1,1) ) then
+    if(is_bound(1,1)) then
       call set_bc(cbc(1,1,1),1,n(1),1,.false.,bc(1,1,1),dl(1),u)
       call set_bc(cbc(1,1,2),1,n(1),1,.true. ,bc(1,1,2),dl(1),v)
       call set_bc(cbc(1,1,3),1,n(1),1,.true. ,bc(1,1,3),dl(1),w)
     endif
-    if( is_bound(0,2) ) then
+    if(is_bound(0,2)) then
       call set_bc(cbc(0,2,1),0,n(2),2,.true. ,bc(0,2,1),dl(2),u)
       call set_bc(cbc(0,2,2),0,n(2),2,.false.,bc(0,2,2),dl(2),v)
       call set_bc(cbc(0,2,3),0,n(2),2,.true. ,bc(0,2,3),dl(2),w)
      endif
-    if( is_bound(1,2) ) then
+    if(is_bound(1,2)) then
       call set_bc(cbc(1,2,1),1,n(2),2,.true. ,bc(1,2,1),dl(2),u)
       call set_bc(cbc(1,2,2),1,n(2),2,.false.,bc(1,2,2),dl(2),v)
       call set_bc(cbc(1,2,3),1,n(2),2,.true. ,bc(1,2,3),dl(2),w)
     endif
-    if( is_bound(0,3) ) then
+    if(is_bound(0,3)) then
       call set_bc(cbc(0,3,1),0,n(3),3,.true. ,bc(0,3,1),dzc(0)   ,u)
       call set_bc(cbc(0,3,2),0,n(3),3,.true. ,bc(0,3,2),dzc(0)   ,v)
       call set_bc(cbc(0,3,3),0,n(3),3,.false.,bc(0,3,3),dzf(0)   ,w)
     endif
-    if( is_bound(1,3) ) then
+    if(is_bound(1,3)) then
       call set_bc(cbc(1,3,1),1,n(3),3,.true. ,bc(1,3,1),dzc(n(3)),u)
       call set_bc(cbc(1,3,2),1,n(3),3,.true. ,bc(1,3,2),dzc(n(3)),v)
       call set_bc(cbc(1,3,3),1,n(3),3,.false.,bc(1,3,3),dzf(n(3)),w)
@@ -90,22 +90,22 @@ module mod_bound
     call updthalo(n,2,p)
     call updthalo(n,3,p)
     !
-    if( is_bound(0,1) ) then
+    if(is_bound(0,1)) then
       call set_bc(cbc(0,1),0,n(1),1,.true.,bc(0,1),dl(1),p)
     endif
-    if( is_bound(1,1) ) then
+    if(is_bound(1,1)) then
       call set_bc(cbc(1,1),1,n(1),1,.true.,bc(1,1),dl(1),p)
     endif
-    if( is_bound(0,2) ) then
+    if(is_bound(0,2)) then
       call set_bc(cbc(0,2),0,n(2),2,.true.,bc(0,2),dl(2),p)
     endif
-    if( is_bound(1,2) ) then
+    if(is_bound(1,2)) then
       call set_bc(cbc(1,2),1,n(2),2,.true.,bc(1,2),dl(2),p)
     endif
-    if( is_bound(0,3) ) then
+    if(is_bound(0,3)) then
       call set_bc(cbc(0,3),0,n(3),3,.true.,bc(0,3),dzc(0)   ,p)
     endif
-    if( is_bound(1,3) ) then
+    if(is_bound(1,3)) then
       call set_bc(cbc(1,3),1,n(3),3,.true.,bc(1,3),dzc(n(3)),p)
     endif
     return
@@ -291,7 +291,7 @@ module mod_bound
     !
     select case(idir)
     case(1) ! x direction, right
-      if( is_bound(1,idir) ) then
+      if(is_bound(1,idir)) then
         i = n(1) + 1
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(j,k) &
@@ -304,7 +304,7 @@ module mod_bound
         !$OMP END PARALLEL DO
       endif
     case(2) ! y direction, back
-      if( is_bound(1,idir) ) then
+      if(is_bound(1,idir)) then
         j = n(2) + 1
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(i,k) &
@@ -317,7 +317,7 @@ module mod_bound
         !$OMP END PARALLEL DO
       endif
     case(3) ! z direction, top
-      if( is_bound(1,idir) ) then
+      if(is_bound(1,idir)) then
         k = n(3) + 1
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(i,j) &
@@ -330,7 +330,7 @@ module mod_bound
         !$OMP END PARALLEL DO
       endif
     case(-1) ! x direction, left
-      if( is_bound(0,idir) ) then
+      if(is_bound(0,idir)) then
         i = 0
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(j,k) &
@@ -343,7 +343,7 @@ module mod_bound
         !$OMP END PARALLEL DO
       endif
     case(-2) ! y direction, front
-      if( is_bound(0,idir) ) then
+      if(is_bound(0,idir)) then
         j = 0
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(i,k) &
@@ -356,7 +356,7 @@ module mod_bound
         !$OMP END PARALLEL DO
       endif
     case(-3) ! z direction, bottom
-      if( is_bound(0,idir) ) then
+      if(is_bound(0,idir)) then
         k = 0
         !$OMP PARALLEL DO DEFAULT(none) &
         !$OMP PRIVATE(i,j) &
@@ -391,7 +391,7 @@ module mod_bound
     dzfi = dzf**(-1)
     select case(idir)
       case(1) ! x direction
-        if( is_bound(0,idir) ) then
+        if(is_bound(0,idir)) then
           i = 0
           do k=1,n(3)
             do j=1,n(2)
@@ -401,7 +401,7 @@ module mod_bound
         endif
       case(2) ! y direction
         j = 0
-        if( is_bound(0,idir) ) then
+        if(is_bound(0,idir)) then
           do k=1,n(3)
             do i=1,n(1)
               v(i,j,k) = vel2d(i,k)
@@ -409,7 +409,7 @@ module mod_bound
           enddo 
         endif
       case(3) ! z direction
-        if( is_bound(0,idir) ) then
+        if(is_bound(0,idir)) then
           k = 0
           do j=1,n(2)
             do i=1,n(1)
@@ -434,32 +434,32 @@ module mod_bound
     do idir = 1,3
       if(c_or_f(idir).eq.'f'.and.cbc(1,idir).eq.'D') q(idir) = 1
     enddo
-    if( is_bound(0,1) ) then
+    if(is_bound(0,1)) then
       !$OMP WORKSHARE
       p(1        ,1:n(2),1:n(3)) = p(1        ,1:n(2),1:n(3)) + rhsbx(:,:,0)
       !$OMP END WORKSHARE
     endif  
-    if( is_bound(1,1) ) then
+    if(is_bound(1,1)) then
       !$OMP WORKSHARE
       p(n(1)-q(1),1:n(2),1:n(3)) = p(n(1)-q(1),1:n(2),1:n(3)) + rhsbx(:,:,1)
       !$OMP END WORKSHARE
     endif
-    if( is_bound(0,2) ) then
+    if(is_bound(0,2)) then
       !$OMP WORKSHARE
       p(1:n(1),1        ,1:n(3)) = p(1:n(1),1        ,1:n(3)) + rhsby(:,:,0)
       !$OMP END WORKSHARE
     endif
-    if( is_bound(1,2) ) then
+    if(is_bound(1,2)) then
       !$OMP WORKSHARE
       p(1:n(1),n(2)-q(2),1:n(3)) = p(1:n(1),n(2)-q(2),1:n(3)) + rhsby(:,:,1)
       !$OMP END WORKSHARE
     endif
-    if( is_bound(0,3) ) then
+    if(is_bound(0,3)) then
       !$OMP WORKSHARE
       p(1:n(1),1:n(2),1        ) = p(1:n(1),1:n(2),1        ) + rhsbz(:,:,0)
       !$OMP END WORKSHARE
     endif
-    if( is_bound(1,3) ) then
+    if(is_bound(1,3)) then
       !$OMP WORKSHARE
       p(1:n(1),1:n(2),n(3)-q(3)) = p(1:n(1),1:n(2),n(3)-q(3)) + rhsbz(:,:,1)
       !$OMP END WORKSHARE
